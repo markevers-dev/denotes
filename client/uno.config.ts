@@ -15,7 +15,14 @@ import {
     ],
     theme: {
       colors: {
-        // ...
+        brand: {
+          primary: "#70ffaf",
+          secondary: "f472b6",
+          black: "#0d0d0d",
+          gray: "#262626",
+          white: "#ffffff",
+          offWhite: "#f2f2f2",
+        }
       }
     },
     presets: [
