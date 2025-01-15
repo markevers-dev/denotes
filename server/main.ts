@@ -20,5 +20,5 @@ await setupDatabase(client);
 
 const app = createApp(client);
 
-console.log(`Oak Server is running on port ${server_port}`);
+console.log(`Oak Server is running on port ${server_port} and ready to Rawr!`);
 await app.listen({ port: server_port });
