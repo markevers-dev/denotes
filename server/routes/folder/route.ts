@@ -1,6 +1,19 @@
 import { Router } from "jsr:@oak/oak/router";
 import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
 
+/**
+ * @description Creates and returns a router with routes for managing folders.
+ *
+ * @param {Client} client - The PostgreSQL client used to interact with the database.
+ * @returns {Router} - The configured router with folder routes.
+ *
+ * The following routes are defined:
+ * - `GET /folders`: Retrieves all folders from the database.
+ * - `POST /folders`: Creates a new folder with the provided name and optional parent folder ID.
+ * - `GET /folders/:id`: Retrieves a specific folder by its ID.
+ * - `PUT /folders/:id`: Updates the name and parent folder ID of a specific folder by its ID.
+ * - `DELETE /folders/:id`: Deletes a specific folder by its ID.
+ */
 export const createFolderRoutes = (client: Client): Router => {
   const router = new Router();
 

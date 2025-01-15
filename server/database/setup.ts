@@ -1,5 +1,10 @@
 import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
 
+/**
+ * @description Set-up the database by creating the necessary tables and columns.
+ *
+ * @param {Client} client - The PostgreSQL client used to interact with the database.
+ */
 export const setupDatabase = async (client: Client) => {
   await client.connect();
 
