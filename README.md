@@ -1,5 +1,7 @@
 # DeNote 🦕
 
-A modern note-taking app.
+This is very much a work in progress.
 
-Made using Vue.js/Nuxt + UnoCSS in the Front-end and Deno/Oak + Postgres in the Back-end.
+It is mainly being made for the author to learn Vue.js/Nuxt, UnoCSS and Deno/Oak.
+
+When the project is being finished the README and all other relevant documentation will be made.
