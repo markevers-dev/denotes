@@ -24,10 +24,10 @@ jobs:
           deno-version: v1.x
 
       - name: Verify formatting
-        run: deno fmt --check server/
+        run: DENO_FUTURE=1 deno fmt --check server/
 
       - name: Run linter
-        run: deno lint server/
+        run: DENO_FUTURE=1 deno lint server/
 
       # - name: Run tests
-      #   run: deno test -A server/
+      #   run: DENO_FUTURE=1 deno test -A server/
