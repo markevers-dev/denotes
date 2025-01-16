@@ -21,10 +21,34 @@ export const createNoteRoutes = (client: Client): Router => {
   const router = new Router();
 
   router
-    .get("/notes", async (ctx) => {
-      const result = await client.queryObject("SELECT * FROM note");
-      ctx.response.body = result.rows;
-    })
+  .get("/notes", async (ctx) => {
+    const result = await client.queryObject(
+      `SELECT f.id AS folder_id, f.name AS folder_name, n.id AS note_id, n.title AS note_title
+       FROM folder f
+       LEFT JOIN note n ON f.id = n.folder_id`
+    );
+    const folders = result.rows.reduce((acc: any[], row: any) => {
+      // Find the folder in the accumulated list
+      let folder = acc.find((f) => f.folder_id === row.folder_id);
+      if (!folder) {
+        folder = {
+          folder_id: row.folder_id,
+          folder_name: row.folder_name,
+          notes: [],
+        };
+        acc.push(folder);
+      }
+      // Add the note to the folder's notes
+      if (row.note_id) {
+        folder.notes.push({
+          note_id: row.note_id,
+          note_title: row.note_title,
+        });
+      }
+      return acc;
+    }, []);
+    ctx.response.body = folders;
+  })
     .post("/notes", async (ctx) => {
       const { title, content, folder_id } = await ctx.request.body.json();
       await client.queryObject(
