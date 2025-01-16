@@ -7,3 +7,13 @@ export const getAllNotes = async () => {
     console.error(error);
   }
 };
+
+export const getNoteById = async (id: string) => {
+  try {
+    const res = await fetch(`http://localhost:8000/notes/${id}`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}

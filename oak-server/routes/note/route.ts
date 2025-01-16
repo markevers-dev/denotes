@@ -1,5 +1,6 @@
 import { Router } from "jsr:@oak/oak/router";
 import { Client } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
+import { Folder, Note } from "../../types/index.ts";
 
 /**
  * @description Creates and returns a router with routes for managing notes.
